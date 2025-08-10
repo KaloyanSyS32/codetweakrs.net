@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tutorial 27: Python File I/O - CodeTweakrs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    nav {
+      background: #1e1e1e;
+      padding: 10px;
+      border-radius: 6px;
+      margin: 20px auto 30px;
+      max-width: 900px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #64b5f6;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: #64b5f6;
+      transition: width 0.3s ease;
+    }
+    nav a:hover {
+      color: #90caf9;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #64b5f6;
+    }
+    main > article {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 6px;
+    }
+    h2 {
+      color: #64b5f6;
+      margin-bottom: 15px;
+    }
+    pre {
+      background: #000;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      color: #00ff7f;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../tutorials.html">Tutorials</a>
+    <a href="../about.html">About</a>
+  </nav>
+
+  <header>Python File I/O</header>
+
+  <main>
+    <article>
+      <h2>Reading and Writing Files in Python</h2>
+      <p>Basic file input/output operations using Python’s built-in functions.</p>
+      <pre>
+# Writing to a file
+with open('example.txt', 'w') as f:
+    f.write('Hello World')
+
+# Reading from a file
+with open('example.txt', 'r') as f:
+    content = f.read()
+    print(content)
+      </pre>
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2025 CodeTweakrs. All rights reserved.
+  </footer>
+
+</body>
+</html>

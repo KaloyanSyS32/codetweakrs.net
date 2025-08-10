@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tutorials - CodeTweakrs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    nav {
+      background: #1e1e1e;
+      padding: 10px;
+      border-radius: 6px;
+      margin: 20px auto;
+      max-width: 900px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #64b5f6;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: #64b5f6;
+      transition: width 0.3s ease;
+    }
+    nav a:hover {
+      color: #90caf9;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    header {
+      background-color: #1e1e1e;
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 40px auto 30px;
+      border-radius: 6px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      white-space: nowrap;
+      border-right: 3px solid #64b5f6;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      animation: typing-caret 0.5s steps(1) infinite;
+    }
+    @keyframes typing-caret {
+      0%, 50% { border-color: #64b5f6; }
+      50.01%, 100% { border-color: transparent; }
+    }
+    main {
+      padding: 0 20px 40px;
+      max-width: 900px;
+      margin: auto;
+      background-color: #1e1e1e;
+      border-radius: 6px;
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: 0 4px 15px rgba(100, 181, 246, 0.2);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    main:hover {
+      transform: scale(1.01);
+      box-shadow: 0 8px 30px rgba(100, 181, 246, 0.4);
+    }
+    h2 {
+      color: #64b5f6;
+      margin: 50px 0 20px; /* pushed 10px down */
+      line-height: 1.4;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    .tutorial-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 600px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #64b5f6 #1e1e1e;
+    }
+    .tutorial-list::-webkit-scrollbar {
+      width: 8px;
+    }
+    .tutorial-list::-webkit-scrollbar-track {
+      background: #1e1e1e;
+      border-radius: 6px;
+    }
+    .tutorial-list::-webkit-scrollbar-thumb {
+      background-color: #64b5f6;
+      border-radius: 6px;
+      border: 2px solid #1e1e1e;
+    }
+    .tutorial-list li {
+      background-color: #121212;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .tutorial-list li:hover {
+      background-color: #0a0a0a; /* 45% darker */
+    }
+    .tutorial-list a {
+      text-decoration: none;
+      color: #64b5f6;
+      font-size: 18px;
+      font-weight: 600;
+      display: block;
+      width: 100%;
+    }
+    .tutorial-list a:hover {
+      text-decoration: underline;
+      color: #90caf9;
+    }
+    footer {
+      text-align: center;
+      margin: 40px auto 20px;
+      font-size: 14px;
+      color: #777;
+      max-width: 900px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <header id="page-title"></header>
+
+  <main id="main-content">
+    <h2>All Tutorials</h2>
+    <ul class="tutorial-list" id="tutorial-list"></ul>
+  </main>
+
+  <footer>
+    &copy; 2025 CodeTweakrs. All rights reserved.
+  </footer>
+
+  <script>
+    const titleText = "Tutorials";
+    const header = document.getElementById("page-title");
+    let index = 0;
+    header.textContent = "";
+
+    function typeTitle() {
+      if (index < titleText.length) {
+        header.textContent += titleText.charAt(index);
+        index++;
+        setTimeout(typeTitle, 100);
+      } else {
+        header.style.borderRight = "none";
+        header.style.animation = "none";
+        showMain();
+      }
+    }
+
+    function showMain() {
+      document.getElementById("main-content").classList.add("show");
+    }
+
+    const titles = [
+      "Batch Basics: Your First Script",
+      "Python Hello World",
+      "HTML Fundamentals",
+      "JavaScript Introduction",
+      "CSS Styling Basics",
+      "Working with Variables in Batch",
+      "Functions and Procedures in Python",
+      "Building Simple Webpages",
+      "DOM Manipulation with JavaScript",
+      "Styling with CSS Flexbox",
+      "Batch Loops and Conditions",
+      "Python Data Types",
+      "HTML Forms and Inputs",
+      "JavaScript Events",
+      "CSS Grid Layout",
+      "Error Handling in Batch",
+      "Python Lists and Tuples",
+      "Responsive Web Design",
+      "JavaScript Arrays",
+      "CSS Animations Basics",
+      "Batch File Arguments",
+      "Python Dictionaries",
+      "HTML Semantic Tags",
+      "JavaScript Async Basics",
+      "CSS Variables",
+      "Working with Files in Batch",
+      "Python File I/O",
+      "Creating Tables in HTML",
+      "JavaScript Promises",
+      "CSS Transitions",
+      "Batch String Manipulation",
+      "Python Functions Deep Dive",
+      "HTML5 APIs Introduction",
+      "JavaScript ES6 Features",
+      "CSS Positioning",
+      "Batch Registry Edits",
+      "Python Modules and Packages",
+      "HTML Media Tags",
+      "JavaScript Object-Oriented Programming",
+      "CSS Responsive Units",
+      "Batch Error Handling",
+      "Python Classes and Objects",
+      "HTML5 Canvas Basics",
+      "JavaScript Fetch API",
+      "CSS Pseudo-Classes",
+      "Batch Task Automation",
+      "Python Web Scraping",
+      "HTML Accessibility",
+      "JavaScript Local Storage",
+      "CSS Flexbox Advanced",
+      "Batch Network Commands",
+      "Python Data Visualization",
+      "HTML Meta Tags",
+      "JavaScript Debugging",
+      "CSS Typography",
+      "Batch Environment Variables",
+      "Python Exception Handling",
+      "HTML SEO Best Practices",
+      "JavaScript Modules",
+      "CSS Preprocessors Overview",
+      "Batch Scripting Best Practices",
+      "Python Virtual Environments",
+      "HTML Forms Validation",
+      "JavaScript Event Loop",
+      "CSS Grid Advanced",
+      "Batch Scheduled Tasks",
+      "Python Flask Basics",
+      "HTML Emails",
+      "JavaScript Frameworks Intro",
+      "CSS Responsive Design",
+      "Batch Security Tips",
+      "Python Data Classes",
+      "HTML Internationalization",
+      "JavaScript Testing",
+      "CSS Box Model Deep Dive",
+      "Batch Performance Optimization",
+      "Python Asyncio",
+      "HTML Progressive Web Apps",
+      "JavaScript DOM Events",
+      "CSS Shadows and Effects",
+      "Batch and PowerShell Comparison",
+      "Python Data Analysis",
+      "HTML Microdata",
+      "JavaScript ES7+ Features",
+      "CSS Media Queries",
+      "Batch Debugging Techniques",
+      "Python Automation Scripts",
+      "HTML Web Components",
+      "JavaScript Node.js Basics",
+      "CSS Grid vs Flexbox",
+      "Batch File Encryption",
+      "Python GUI with Tkinter",
+      "HTML Forms Advanced",
+      "JavaScript Design Patterns",
+      "CSS Variables in Depth",
+      "Batch Process Monitoring",
+      "Python REST APIs",
+      "HTML Canvas Advanced",
+      "JavaScript Closures Explained",
+      "CSS Custom Properties"
+    ];
+
+    const list = document.getElementById("tutorial-list");
+    for (let i = 0; i < titles.length; i++) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `tutorials/tutorial${i + 1}.html`;
+      a.textContent = `Tutorial ${i + 1}: ${titles[i]}`;
+      a.className = "tutorial-link";
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+
+    window.onload = typeTitle;
+  </script>
+</body>
+</html>
