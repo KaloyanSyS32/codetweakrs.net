@@ -6,15 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CodeTweakrs - Home</title>
   <style>
+    /* Color Variables */
+    :root {
+      --body-bg-color: #121212;
+      --text-color: #e0e0e0;
+      --link-color: #64b5f6;
+      --link-hover-color: #90caf9;
+      --main-bg-color: #1e1e1e;
+      --btn-bg-color: #64b5f6;
+      --btn-text-color: #121212;
+    }
+
+    /* Light Theme */
+    body.light-theme {
+      --body-bg-color: #f0f0f0;
+      --text-color: #333;
+      --link-color: #0d47a1;
+      --link-hover-color: #1565c0;
+      --main-bg-color: #ffffff;
+      --btn-bg-color: #0d47a1;
+      --btn-text-color: #fff;
+    }
+
+    /* General Styling */
     body {
       font-family: Arial, sans-serif;
       max-width: 900px;
       margin: auto;
       padding: 20px;
-      background-color: #121212;
-      color: #e0e0e0;
+      background-color: var(--body-bg-color);
+      color: var(--text-color);
       animation: fadeIn 0.6s ease-in-out;
       scroll-behavior: smooth;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     @keyframes fadeIn {
@@ -30,7 +54,7 @@
     nav a {
       margin: 0 15px;
       text-decoration: none;
-      color: #64b5f6;
+      color: var(--link-color);
       font-weight: bold;
       position: relative;
       transition: color 0.3s ease;
@@ -43,12 +67,12 @@
       bottom: -3px;
       width: 0%;
       height: 2px;
-      background-color: #64b5f6;
+      background-color: var(--link-color);
       transition: width 0.3s ease;
     }
 
     nav a:hover {
-      color: #90caf9;
+      color: var(--link-hover-color);
     }
 
     nav a:hover::after {
@@ -56,10 +80,10 @@
     }
 
     main {
-      background-color: #1e1e1e;
+      background-color: var(--main-bg-color);
       padding: 20px;
       border-radius: 6px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
       opacity: 0;
       transform: translateY(20px);
     }
@@ -76,7 +100,7 @@
     }
 
     h2 {
-      color: #64b5f6;
+      color: var(--link-color);
       margin-bottom: 15px;
     }
 
@@ -88,8 +112,8 @@
       display: inline-block;
       margin-top: 15px;
       padding: 10px 20px;
-      background-color: #64b5f6;
-      color: #121212;
+      background-color: var(--btn-bg-color);
+      color: var(--btn-text-color);
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
@@ -97,7 +121,7 @@
     }
 
     .btn:hover {
-      background-color: #90caf9;
+      background-color: var(--link-hover-color);
       transform: translateY(-2px);
     }
 
@@ -112,14 +136,29 @@
       font-size: 2.5rem;
       font-weight: bold;
       white-space: nowrap;
-      border-right: 3px solid #64b5f6;
+      border-right: 3px solid var(--link-color);
       overflow: hidden;
       display: inline-block;
       margin-bottom: 10px;
     }
+
+    #theme-toggle {
+      background-color: var(--btn-bg-color);
+      color: var(--btn-text-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    #theme-toggle:hover {
+      background-color: var(--link-hover-color);
+    }
   </style>
 </head>
-<body>
+<body class="dark-theme">
   <header>
     <h1 id="typing-text"></h1>
     <nav>
@@ -127,6 +166,7 @@
       <a href="tutorials.html">Tutorials</a>
       <a href="about.html">About</a>
     </nav>
+    <button id="theme-toggle">Switch Theme</button>
   </header>
 
   <main id="main-content">
@@ -163,11 +203,30 @@
       main.classList.add("show");
     }
 
+    // Theme switch functionality
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    themeToggleBtn.addEventListener("click", () => {
+        if (body.classList.contains("light-theme")) {
+            body.classList.remove("light-theme");
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.classList.add("light-theme");
+            localStorage.setItem("theme", "light");
+        }
+    });
+
+    // Load the user's preferred theme from local storage
+    window.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+            body.classList.add("light-theme");
+        }
+    });
+
     // Start typing effect on page load
     window.onload = type;
-
-    // Smooth scroll handled by CSS scroll-behavior
   </script>
 </body>
 </html>
-
